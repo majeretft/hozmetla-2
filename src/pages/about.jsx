@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 import Layout from "../components/layout";
-import ProductCard from "../components/product/card";
 import Navbar from "../components/navbar/navbar";
 
 const Main = styled.main`
@@ -19,7 +18,7 @@ const IndexPage = () => {
         <Navbar />
       </header>
       <Main>
-        <ProductCard />
+        <h1>About</h1>
       </Main>
     </Layout>
   );
