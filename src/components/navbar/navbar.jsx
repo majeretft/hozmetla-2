@@ -27,6 +27,7 @@ const ItemsContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(5px);
 `;
 
 const Items = styled.ul`
