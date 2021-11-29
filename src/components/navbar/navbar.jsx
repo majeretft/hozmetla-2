@@ -12,7 +12,7 @@ const StyledLink = styled(Link)`
 `;
 
 const Container = styled.div`
-  height: 59px;
+  height: 58px;
 `;
 
 const ItemsContainer = styled.div`
@@ -46,7 +46,8 @@ const Item = styled.li`
 `;
 
 const HamburgerContainer = styled.button`
-  padding: 5px;
+  padding: 5px 0;
+  margin-left: -8px;
   outline: none;
   border: none;
   background: none;
@@ -82,7 +83,7 @@ const Navbar = () => {
 
   return (
     <nav ref={menuRef}>
-      <Container className="container">
+      <Container className="container mb-3">
         <ItemsContainer onClick={() => setOpen(false)} isOpen={isOpen}>
           <Items>
             <Item>
