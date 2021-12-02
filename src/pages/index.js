@@ -60,7 +60,7 @@ const Image = () => {
       className="mb-3"
       objectFit="contain"
       alt=""
-      src={"../images/bg/Brushes in shape.png"}
+      src="../images/bg/Brushes in shape.png"
       formats={["auto", "webp", "avif"]}
       loading="eager"
       placeholder="tracedSVG"
