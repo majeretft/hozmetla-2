@@ -13,6 +13,7 @@ const Main = styled.main`
   justify-content: stretch;
   align-items: stretch;
   flex-direction: column;
+  overflow-x: hidden;
 `;
 
 const FlexColumnCenter = styled.div`
@@ -92,8 +93,30 @@ const IndexPage = () => {
             </DownloadCatalog>
           </FlexColumnCenter>
         </div>
-        <div className="container">
-          <ProductCard />
+        <div
+          style={{
+            paddingTop: 30,
+            paddingBottom: 30,
+            marginBottom: 25,
+            marginTop: 40,
+          }}
+        >
+          <div className="container">
+            <div className="row">
+              <div className="col">
+                <ProductCard />
+              </div>
+              <div className="col">
+                <ProductCard />
+              </div>
+              <div className="col">
+                <ProductCard />
+              </div>
+              <div className="col">
+                <ProductCard />
+              </div>
+            </div>
+          </div>
         </div>
       </Main>
     </Layout>
