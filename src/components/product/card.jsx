@@ -6,7 +6,7 @@ import styled from "styled-components";
 const Photo = ({ className }) => {
   return (
     <StaticImage
-      src="../../images/product/IMG_20211202_165440_750w.png"
+      src="../../images/product/DSC01042_750w.png"
       formats={["auto", "webp", "avif"]}
       placeholder="tracedSVG"
       alt="Щетка-сметка"
@@ -38,12 +38,7 @@ const Header = styled.div`
   flex-direction: column;
 
   h3 {
-    line-height: 1;
     color: #fff;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    font-size: 1.1rem;
-    font-weight: 600;
   }
 
   p {
@@ -59,13 +54,13 @@ const Body = styled.div`
   display: flex;
   flex-direction: column;
 
-  h4 {
-    font-size: 1.2rem;
-    line-height: 1.1;
+  small {
+    color: #757575;
   }
 
   table {
     line-height: 1.1;
+    width: 70%;
   }
 
   a {
@@ -141,6 +136,14 @@ const Card = styled.div`
   min-width: 272px;
   margin-bottom: 30px;
 
+  h3 {
+    line-height: 1;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+
   @media screen and (hover: hover) and (pointer: fine) {
     &:hover {
       ${Content} {
@@ -171,13 +174,15 @@ const CardComponent = ({
           <p>{text}</p>
         </Header>
         <Body>
-          <h4>
+          <h3>
+            {caption}
+            <br />
             <small>
-              <b>Арт: </b>
+              <small>Арт. </small>
+              <span>A</span>
+              {code}
             </small>
-            <span>A</span>
-            {code}
-          </h4>
+          </h3>
           <table>
             <tbody>
               <tr>
