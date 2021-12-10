@@ -1,8 +1,10 @@
 import React from "react";
+import { graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilePdf } from "@fortawesome/free-solid-svg-icons";
+import slugify from "slugify";
 
 import Layout from "../components/layout";
 import ProductCard from "../components/product/card";
@@ -69,7 +71,9 @@ const Image = () => {
   );
 };
 
-const IndexPage = () => {
+const IndexPage = ({ data }) => {
+  const groups = data?.allFile?.group || [];
+
   return (
     <Layout>
       <header>
@@ -103,18 +107,36 @@ const IndexPage = () => {
         >
           <div className="container">
             <div className="row">
-              <div className="col">
-                <ProductCard />
-              </div>
-              <div className="col">
-                <ProductCard />
-              </div>
-              <div className="col">
-                <ProductCard />
-              </div>
-              <div className="col">
-                <ProductCard />
-              </div>
+              {groups.map((g) => {
+                let d = null;
+                let icon = null;
+
+                g.nodes.forEach((n) => {
+                  switch (n.name) {
+                    case "index":
+                      d = n.childBrushSweepJson;
+                      break;
+                    case "icon":
+                      icon = n.childImageSharp.gatsbyImageData;
+                      break;
+                    default:
+                      break;
+                  }
+                });
+
+                return (
+                  <div key={g.field} className="col-12 col-sm-2 col-md-4 col-lg-3 col-xl-3">
+                    <ProductCard
+                      fancyText={d.fancyText}
+                      shortText={d.shortText}
+                      name={d.name}
+                      code={d.code}
+                      link={slugify(d.slugRaw, { lower: true })}
+                      icon={icon}
+                    />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -124,3 +146,37 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
+
+export const query = graphql`
+  query IndexPageQuery {
+    allFile(
+      filter: {
+        sourceInstanceName: { eq: "content" }
+        ext: { in: [".json", ".png"] }
+        name: { in: ["index", "icon"] }
+      }
+    ) {
+      group(field: relativeDirectory) {
+        field
+        nodes {
+          name
+          relativeDirectory
+          childImageSharp {
+            gatsbyImageData(
+              placeholder: TRACED_SVG
+              formats: [AUTO, WEBP, AVIF]
+            )
+          }
+          extension
+          childBrushSweepJson {
+            fancyText
+            shortText
+            name
+            code
+            slugRaw
+          }
+        }
+      }
+    }
+  }
+`;

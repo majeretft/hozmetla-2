@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "gatsby";
-import { StaticImage } from "gatsby-plugin-image";
+import { GatsbyImage as Img } from "gatsby-plugin-image";
 import styled from "styled-components";
 
-const Photo = ({ className }) => {
+const Photo = ({ className, img }) => {
+  console.log(img);
+
   return (
-    <StaticImage
-      src="../../images/product/DSC01042_750w.png"
+    <Img
+      image={img}
       formats={["auto", "webp", "avif"]}
       placeholder="tracedSVG"
       alt="Щетка-сметка"
@@ -60,7 +62,6 @@ const Body = styled.div`
 
   table {
     line-height: 1.1;
-    width: 70%;
   }
 
   a {
@@ -158,10 +159,12 @@ const Card = styled.div`
 `;
 
 const CardComponent = ({
-  fancyText = "щетка",
-  text = "Удобная щетка для дома, мастерской и цеха",
-  caption = "щетка-сметка",
-  code = "000001",
+  fancyText = "TEXT",
+  shortText = "Some short description of given item",
+  name = "Item name",
+  code = "000000",
+  icon,
+  link = "/",
 }) => {
   return (
     <Card>
@@ -170,12 +173,12 @@ const CardComponent = ({
           <FancyText>
             <Stretch>{fancyText}</Stretch>
           </FancyText>
-          <h3>{caption}</h3>
-          <p>{text}</p>
+          <h3>{name}</h3>
+          <p>{shortText}</p>
         </Header>
         <Body>
           <h3>
-            {caption}
+            {name}
             <br />
             <small>
               <small>Арт. </small>
@@ -205,10 +208,10 @@ const CardComponent = ({
               </tr>
             </tbody>
           </table>
-          <Link to="/">подробнее</Link>
+          <Link to={link}>подробнее</Link>
         </Body>
       </Content>
-      <Image />
+      <Image img={icon} />
     </Card>
   );
 };
