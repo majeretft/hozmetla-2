@@ -28,7 +28,7 @@ const Content = styled.div`
 `;
 
 const Header = styled.div`
-  height: 50%;
+  height: 210px;
   background: linear-gradient(
     146deg,
     rgba(0, 212, 255, 1) 0%,
@@ -50,7 +50,6 @@ const Header = styled.div`
 `;
 
 const Body = styled.div`
-  height: 50%;
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -110,7 +109,7 @@ const Image = styled(Photo)`
 const FancyText = styled.span`
   font-family: "Alegreya Sans", sans-serif;
   text-transform: uppercase;
-  font-size: 5.3rem;
+  font-size: 4.8rem;
   font-weight: 800;
   position: absolute;
   bottom: 0;
@@ -123,13 +122,13 @@ const FancyText = styled.span`
 `;
 
 const Stretch = styled.span`
-  transform: scale(1, 1.3);
+  transform: scale(1, 1.35);
   transform-origin: bottom;
   display: block;
 `;
 
 const Card = styled.div`
-  height: 450px;
+  height: 410px;
   padding-right: 30px;
   padding-top: 15px;
   position: relative;
@@ -164,12 +163,8 @@ const CardComponent = ({ product, icon, link = "/" }) => {
     shortText: "Inspirational short textual description of current product",
     fancyText: "fancy",
     material: {
-      handle: { name: "X", value: "Val of X" },
-      filament: { name: "Y", value: "Val of Y" },
-    },
-    color: {
-      handle: { name: "I", value: "Val of I" },
-      filament: { name: "J", value: "Val of J" },
+      handle: { name: "X", value: "Val of X", color: "Color" },
+      filament: { name: "Y", value: "Val of Y", color: "Color" },
     },
   };
 
@@ -201,25 +196,19 @@ const CardComponent = ({ product, icon, link = "/" }) => {
                 <td>
                   <b>{v.material.handle.name}:</b>
                 </td>
-                <td>{v.material.handle.value}</td>
+                <td>
+                  {v.material.handle.value}{" "}
+                  <small>({v.material.handle.color})</small>
+                </td>
               </tr>
               <tr>
                 <td>
                   <b>{v.material.filament.name}:</b>
                 </td>
-                <td>{v.material.filament.value}</td>
-              </tr>
-              <tr>
                 <td>
-                  <b>{v.color.handle.name}:</b>
+                  {v.material.filament.value}{" "}
+                  <small>({v.material.filament.color})</small>
                 </td>
-                <td>{v.color.handle.value}</td>
-              </tr>
-              <tr>
-                <td>
-                  <b>{v.color.filament.name}:</b>
-                </td>
-                <td>{v.color.filament.value}</td>
               </tr>
             </tbody>
           </table>

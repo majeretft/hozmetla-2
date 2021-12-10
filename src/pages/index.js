@@ -179,20 +179,12 @@ export const query = graphql`
               filament {
                 name
                 value
+                color
               }
               handle {
                 name
                 value
-              }
-            }
-            color {
-              filament {
-                name
-                value
-              }
-              handle {
-                name
-                value
+                color
               }
             }
           }

@@ -11,11 +11,7 @@
     { "label": "L", "value": 5 }
   ],
   "material": {
-    "handle": { "name": "Колодка", "value": "PP" },
-    "filament": { "name": "Волокно", "value": "PP" }
-  },
-  "color": {
-    "handle": { "name": "Колодка", "value": "Черный" },
-    "filament": { "name": "Волокно", "value": "Черный / Цветной" }
+    "handle": { "name": "Колодка", "value": "PP", "color": "Черный" },
+    "filament": { "name": "Волокно", "value": "PP", "color": "Черный / Цветной" }
   }
 }
