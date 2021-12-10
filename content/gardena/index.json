@@ -1,9 +1,9 @@
 {
-  "name": "Щетка-Сметка",
-  "code": "150180",
-  "shortText": "Удобная щетка сметка для дома, мастерской и цеха",
-  "fancyText": "щетка",
-  "slugRaw": "щетка сметка",
+  "name": "Гардена",
+  "code": "150126",
+  "shortText": "Удобная плоская метла для улицы, сада, цеха, строительной площадки",
+  "fancyText": "метла",
+  "slugRaw": "метла гардена",
   "dim": [
     { "label": "D", "value": 1.8 },
     { "label": "W", "value": 29 },
@@ -12,7 +12,7 @@
   ],
   "material": {
     "handle": { "name": "Колодка", "value": "PP" },
-    "filament": { "name": "Волокно", "value": "PET" }
+    "filament": { "name": "Волокно", "value": "PP" }
   },
   "color": {
     "handle": { "name": "Колодка", "value": "Черный" },

@@ -28,7 +28,7 @@ const Content = styled.div`
 `;
 
 const Header = styled.div`
-  height: 55%;
+  height: 50%;
   background: linear-gradient(
     146deg,
     rgba(0, 212, 255, 1) 0%,
@@ -50,9 +50,8 @@ const Header = styled.div`
 `;
 
 const Body = styled.div`
-  height: 45%;
+  height: 50%;
   padding: 20px;
-  padding-right: 20%;
   display: flex;
   flex-direction: column;
 
@@ -116,11 +115,11 @@ const FancyText = styled.span`
   position: absolute;
   bottom: 0;
   left: 0;
+  width: 100%;
   line-height: 1;
   color: rgb(0, 0, 0);
   opacity: 0.1;
-  margin-left: -6px;
-  margin-bottom: -9px;
+  margin-bottom: -7px;
 `;
 
 const Stretch = styled.span`
@@ -130,7 +129,7 @@ const Stretch = styled.span`
 `;
 
 const Card = styled.div`
-  height: 400px;
+  height: 450px;
   padding-right: 30px;
   padding-top: 15px;
   position: relative;
@@ -158,53 +157,69 @@ const Card = styled.div`
   }
 `;
 
-const CardComponent = ({
-  fancyText = "TEXT",
-  shortText = "Some short description of given item",
-  name = "Item name",
-  code = "000000",
-  icon,
-  link = "/",
-}) => {
+const CardComponent = ({ product, icon, link = "/" }) => {
+  let v = {
+    name: "Name of product",
+    code: "000000",
+    shortText: "Inspirational short textual description of current product",
+    fancyText: "fancy",
+    material: {
+      handle: { name: "X", value: "Val of X" },
+      filament: { name: "Y", value: "Val of Y" },
+    },
+    color: {
+      handle: { name: "I", value: "Val of I" },
+      filament: { name: "J", value: "Val of J" },
+    },
+  };
+
+  v = Object.assign(v, product);
+
   return (
     <Card>
       <Content>
         <Header>
           <FancyText>
-            <Stretch>{fancyText}</Stretch>
+            <Stretch>{v.fancyText}</Stretch>
           </FancyText>
-          <h3>{name}</h3>
-          <p>{shortText}</p>
+          <h3>{v.name}</h3>
+          <p>{v.shortText}</p>
         </Header>
         <Body>
           <h3>
-            {name}
+            {v.name}
             <br />
             <small>
               <small>Арт. </small>
               <span>A</span>
-              {code}
+              {v.code}
             </small>
           </h3>
           <table>
             <tbody>
               <tr>
                 <td>
-                  <b>Колодка:</b>
+                  <b>{v.material.handle.name}:</b>
                 </td>
-                <td>PP</td>
+                <td>{v.material.handle.value}</td>
               </tr>
               <tr>
                 <td>
-                  <b>Волокно:</b>
+                  <b>{v.material.filament.name}:</b>
                 </td>
-                <td>PET</td>
+                <td>{v.material.filament.value}</td>
               </tr>
               <tr>
                 <td>
-                  <b>Цвет:</b>
+                  <b>{v.color.handle.name}:</b>
                 </td>
-                <td>Черный / Цветной</td>
+                <td>{v.color.handle.value}</td>
+              </tr>
+              <tr>
+                <td>
+                  <b>{v.color.filament.name}:</b>
+                </td>
+                <td>{v.color.filament.value}</td>
               </tr>
             </tbody>
           </table>

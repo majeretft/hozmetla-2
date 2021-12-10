@@ -110,11 +110,13 @@ const IndexPage = ({ data }) => {
               {groups.map((g) => {
                 let d = null;
                 let icon = null;
+                let key = null;
 
                 g.nodes.forEach((n) => {
+                  key = n.relativeDirectory;
                   switch (n.name) {
                     case "index":
-                      d = n.childBrushSweepJson;
+                      d = n.childJson;
                       break;
                     case "icon":
                       icon = n.childImageSharp.gatsbyImageData;
@@ -125,14 +127,14 @@ const IndexPage = ({ data }) => {
                 });
 
                 return (
-                  <div key={g.field} className="col-12 col-sm-2 col-md-4 col-lg-3 col-xl-3">
+                  <div
+                    key={key}
+                    className="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3 col-xxl-3"
+                  >
                     <ProductCard
-                      fancyText={d.fancyText}
-                      shortText={d.shortText}
-                      name={d.name}
-                      code={d.code}
-                      link={slugify(d.slugRaw, { lower: true })}
+                      product={d}
                       icon={icon}
+                      link={slugify(d.slugRaw, { lower: true })}
                     />
                   </div>
                 );
@@ -157,7 +159,6 @@ export const query = graphql`
       }
     ) {
       group(field: relativeDirectory) {
-        field
         nodes {
           name
           relativeDirectory
@@ -168,12 +169,32 @@ export const query = graphql`
             )
           }
           extension
-          childBrushSweepJson {
+          childJson {
             fancyText
             shortText
             name
             code
             slugRaw
+            material {
+              filament {
+                name
+                value
+              }
+              handle {
+                name
+                value
+              }
+            }
+            color {
+              filament {
+                name
+                value
+              }
+              handle {
+                name
+                value
+              }
+            }
           }
         }
       }
