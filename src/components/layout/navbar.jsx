@@ -3,13 +3,7 @@ import { Link } from "gatsby";
 import { Turn as Hamburger } from "hamburger-react";
 import styled from "styled-components";
 
-const StyledLink = styled(Link)`
-  font-family: "Nunito", sans-serif;
-  font-weight: 600;
-  color: #f0f0f0;
-  text-decoration: none;
-  font-size: 1.5em;
-`;
+import logo from "../../images/brand/vto_logo_black.svg";
 
 const Container = styled.div`
   height: 58px;
@@ -32,7 +26,8 @@ const ItemsContainer = styled.div`
 
 const Items = styled.ul`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   list-style: none;
@@ -41,8 +36,34 @@ const Items = styled.ul`
 `;
 
 const Item = styled.li`
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 5px;
+  width: 30%;
+  min-width: 90px;
+  max-width: 120px;
+  background-color: #eee;
+  margin: 1.5%;
+  border-radius: 5px;
+
+  &::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+
+  a {
+    font-family: var(--ws-font-header);
+    font-weight: 400;
+    color: #000;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  img {
+    height: 50px;
+  }
 `;
 
 const HamburgerContainer = styled.button`
@@ -53,6 +74,21 @@ const HamburgerContainer = styled.button`
   background: none;
   position: absolute;
   z-index: 101;
+`;
+
+const Brand = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  hr {
+    background-color: #fff;
+    width: 100%;
+  }
+
+  img {
+    height: 3.5rem;
+  }
 `;
 
 const Navbar = () => {
@@ -85,20 +121,37 @@ const Navbar = () => {
     <nav ref={menuRef}>
       <Container className="container mb-3">
         <ItemsContainer onClick={() => setOpen(false)} isOpen={isOpen}>
-          <Items>
-            <Item>
-              <StyledLink to="/">Домашняя</StyledLink>
-            </Item>
-            <Item>
-              <StyledLink to="/about">О Компании</StyledLink>
-            </Item>
-            <Item>
-              <StyledLink to="/contact">Контакты</StyledLink>
-            </Item>
-          </Items>
+          <div className="container">
+            <Brand>
+              <img src={logo} alt="" />
+              <hr />
+            </Brand>
+            <Items>
+              <Item>
+                <Link to="/">Домашняя</Link>
+              </Item>
+              <Item>
+                <Link to="/contact">Продукция</Link>
+              </Item>
+              <Item>
+                <Link to="/about">О Компании</Link>
+              </Item>
+              <Item>
+                <Link to="/contact">Контакты</Link>
+              </Item>
+            </Items>
+            <Brand>
+              <hr />
+              <p>Изготовление уборочного инвентаря</p>
+            </Brand>
+          </div>
         </ItemsContainer>
         <HamburgerContainer>
-          <Hamburger toggled={isOpen} toggle={setOpen} color={isOpen ? "#f0f0f0" : "currentColor"} />
+          <Hamburger
+            toggled={isOpen}
+            toggle={setOpen}
+            color={isOpen ? "#f0f0f0" : "currentColor"}
+          />
         </HamburgerContainer>
       </Container>
     </nav>
