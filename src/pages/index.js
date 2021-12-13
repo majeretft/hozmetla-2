@@ -49,11 +49,19 @@ const DownloadCatalog = styled.button`
   color: #5674b9;
   font-size: 1.2em;
   line-height: 1;
+  transition: all 0.25s ease-in 0s;
 
   span {
     display: inline-block;
     margin-left: 0.5em;
     line-height: 1;
+  }
+
+  @media screen and (hover: hover) and (pointer: fine) {
+    &:hover {
+      color: #fff;
+      background-color: #5674b9;
+    }
   }
 `;
 

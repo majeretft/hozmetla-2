@@ -77,10 +77,12 @@ const Body = styled.div`
     font-weight: 700;
     transition: all 0.25s ease-in 0s;
 
-    &:hover {
-      color: #fff;
-      background: #db710d;
-      text-decoration: none;
+    @media screen and (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: #fff;
+        background: #db710d;
+        text-decoration: none;
+      }
     }
 
     &::before {
@@ -117,7 +119,6 @@ const FancyText = styled.span`
   line-height: 1;
   color: rgb(0, 0, 0);
   opacity: 0.1;
-  margin-bottom: -7px;
 `;
 
 const Stretch = styled.span`
