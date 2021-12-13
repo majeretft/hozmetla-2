@@ -8,7 +8,7 @@ import slugify from "slugify";
 
 import Layout from "../components/layout";
 import ProductCard from "../components/product/card";
-import Navbar from "../components/navbar/navbar";
+import Navbar from "../components/layout/navbar";
 
 const Main = styled.main`
   display: flex;
