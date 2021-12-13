@@ -129,7 +129,7 @@ const IndexPage = ({ data }) => {
                 return (
                   <div
                     key={key}
-                    className="col-12 col-sm-6 col-md-5 col-lg-4 col-xl-3 col-xxl-3"
+                    className="col-12 col-sm-6 col-lg-4 col-xl-3 col-xxl-3"
                   >
                     <ProductCard
                       product={d}

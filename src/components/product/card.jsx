@@ -109,7 +109,6 @@ const Image = styled(Photo)`
 const FancyText = styled.span`
   font-family: "Alegreya Sans", sans-serif;
   text-transform: uppercase;
-  font-size: 4.8rem;
   font-weight: 800;
   position: absolute;
   bottom: 0;
@@ -132,7 +131,8 @@ const Card = styled.div`
   padding-right: 30px;
   padding-top: 15px;
   position: relative;
-  min-width: 272px;
+  min-width: 260px;
+  max-width: 400px;
   margin-bottom: 30px;
 
   h3 {
@@ -175,7 +175,13 @@ const CardComponent = ({ product, icon, link = "/" }) => {
       <Content>
         <Header>
           <FancyText>
-            <Stretch>{v.fancyText}</Stretch>
+            <Stretch>
+              <svg viewBox="0 0 54 18">
+                <text x="0" y="15">
+                  {v.fancyText}
+                </text>
+              </svg>
+            </Stretch>
           </FancyText>
           <h3>{v.name}</h3>
           <p>{v.shortText}</p>
