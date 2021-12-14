@@ -134,7 +134,7 @@ const Navbar = () => {
           <Hamburger
             toggled={isOpen}
             toggle={setOpen}
-            color={isOpen ? "#f0f0f0" : "currentColor"}
+            color={isOpen ? "#f0f0f0" : "#5674b9"}
           />
         </HamburgerContainer>
       </Container>
