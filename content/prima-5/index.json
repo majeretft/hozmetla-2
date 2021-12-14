@@ -1,0 +1,20 @@
+{
+  "name": "Прима (МК5)",
+  "code": "150122",
+  "shortText": "Современная круглая метла для улицы, сада, цеха, строительной площадки",
+  "shortNotes": [
+    "Количество колец 5"
+  ],
+  "fancyText": "метла",
+  "slugRaw": "метла прима 5",
+  "dim": [
+    { "label": "L", "value": "150" },
+    { "label": "F", "value": "Черный / Цветной" },
+    { "label": "R", "value": "5" }
+  ],
+  "material": {
+    "handle": { "name": "Черенок", "value": "Дерево (в.с.)", "color": null },
+    "filament": { "name": "Волокно", "value": "PP", "color": "Цветной" },
+    "decoration": { "name": "Колпак", "value": "PP", "color": "Цветной" }
+  }
+}

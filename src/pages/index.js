@@ -185,6 +185,7 @@ export const query = graphql`
           childJson {
             fancyText
             shortText
+            shortNotes
             name
             code
             slugRaw

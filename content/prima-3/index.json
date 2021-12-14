@@ -1,0 +1,20 @@
+{
+  "name": "Прима (МК3)",
+  "code": "150121",
+  "shortText": "Современная круглая метла для улицы, сада, строительной площадки",
+  "shortNotes": [
+    "Количество колец 3"
+  ],
+  "fancyText": "метла",
+  "slugRaw": "метла прима 3",
+  "dim": [
+    { "label": "L", "value": "144" },
+    { "label": "F", "value": "Черный / Цветной" },
+    { "label": "R", "value": "3" }
+  ],
+  "material": {
+    "handle": { "name": "Черенок", "value": "Дерево (в.с.)", "color": null },
+    "filament": { "name": "Волокно", "value": "PP", "color": "Цветной" },
+    "decoration": { "name": "Колпак", "value": "PP", "color": "Цветной" }
+  }
+}

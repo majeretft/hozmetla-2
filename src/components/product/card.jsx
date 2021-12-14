@@ -128,7 +128,7 @@ const Stretch = styled.span`
 `;
 
 const Card = styled.div`
-  height: 410px;
+  height: 420px;
   padding-right: 30px;
   padding-top: 15px;
   position: relative;
@@ -162,10 +162,12 @@ const CardComponent = ({ product, icon, link = "/" }) => {
     name: "Name of product",
     code: "000000",
     shortText: "Inspirational short textual description of current product",
+    shortNotes: null,
     fancyText: "fancy",
     material: {
       handle: { name: "X", value: "Val of X", color: "Color" },
       filament: { name: "Y", value: "Val of Y", color: "Color" },
+      decoration: null,
     },
   };
 
@@ -205,7 +207,9 @@ const CardComponent = ({ product, icon, link = "/" }) => {
                 </td>
                 <td>
                   {v.material.handle.value}{" "}
-                  <small>({v.material.handle.color})</small>
+                  {v.material.handle.color && (
+                    <small>({v.material.handle.color})</small>
+                  )}
                 </td>
               </tr>
               <tr>
@@ -214,11 +218,16 @@ const CardComponent = ({ product, icon, link = "/" }) => {
                 </td>
                 <td>
                   {v.material.filament.value}{" "}
-                  <small>({v.material.filament.color})</small>
+                  {v.material.filament.color && (
+                    <small>({v.material.filament.color})</small>
+                  )}
                 </td>
               </tr>
             </tbody>
           </table>
+          {v.shortNotes?.map((x) => (
+            <small key={x}>* - {x}</small>
+          ))}
           <Link to={link}>подробнее</Link>
         </Body>
       </Content>

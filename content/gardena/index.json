@@ -2,16 +2,18 @@
   "name": "Гардена",
   "code": "150126",
   "shortText": "Удобная плоская метла для улицы, сада, цеха, строительной площадки",
+  "shortNotes": null,
   "fancyText": "метла",
   "slugRaw": "метла гардена",
   "dim": [
-    { "label": "D", "value": 1.8 },
-    { "label": "W", "value": 29 },
-    { "label": "H", "value": 1.1 },
-    { "label": "L", "value": 5 }
+    { "label": "D", "value": "3.5" },
+    { "label": "W", "value": "24.5" },
+    { "label": "H", "value": "7.3" },
+    { "label": "L", "value": "19.5" }
   ],
   "material": {
     "handle": { "name": "Колодка", "value": "PP", "color": "Черный" },
-    "filament": { "name": "Волокно", "value": "PP", "color": "Черный / Цветной" }
+    "filament": { "name": "Волокно", "value": "PP", "color": "Черный / Цветной" },
+    "decoration": null
   }
 }

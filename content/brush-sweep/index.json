@@ -2,16 +2,18 @@
   "name": "Щетка-Сметка",
   "code": "150180",
   "shortText": "Удобная щетка сметка для дома, мастерской и цеха",
+  "shortNotes": null,
   "fancyText": "щетка",
   "slugRaw": "щетка сметка",
   "dim": [
-    { "label": "D", "value": 1.8 },
-    { "label": "W", "value": 29 },
-    { "label": "H", "value": 1.1 },
-    { "label": "L", "value": 5 }
+    { "label": "D", "value": "1.8" },
+    { "label": "W", "value": "29" },
+    { "label": "H", "value": "1.1" },
+    { "label": "L", "value": "5" }
   ],
   "material": {
     "handle": { "name": "Колодка", "value": "PP", "color": "Черный" },
-    "filament": { "name": "Волокно", "value": "PET", "color": "Черный / Цветной" }
+    "filament": { "name": "Волокно", "value": "PET", "color": "Черный / Цветной" },
+    "decoration": null
   }
 }
