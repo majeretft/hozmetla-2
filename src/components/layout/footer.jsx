@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
-import logo from "../../images/brand/vto_logo.svg";
+import logo from "../../images/brand/vto_logo_txt.svg";
 
 const Footer = styled.footer`
   background-color: #404040;
@@ -55,25 +55,6 @@ const Brand = styled.div`
     height: 4rem;
     margin-right: 15px;
   }
-
-  div {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-  }
-
-  span {
-    text-transform: uppercase;
-    font-family: var(--ws-font-header);
-    font-weight: 600;
-    line-height: 1;
-    font-size: 2.7rem;
-    color: #eee;
-
-    &:first-child {
-      font-size: 1.5rem;
-    }
-  }
 `;
 
 const Address = styled.div`
@@ -91,10 +72,6 @@ const FooterComponent = () => {
         <Content>
           <Brand>
             <img src={logo} alt="" />
-            <div>
-              <span>центр</span>
-              <span>вто</span>
-            </div>
           </Brand>
           <Contact>
             <Button href="mailto:sales@hozmetla.ru">

@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import { Turn as Hamburger } from "hamburger-react";
 import styled from "styled-components";
 
-import logo from "../../images/brand/vto_logo_black.svg";
+import logo from "../../images/brand/vto_logo_txt.svg";
 
 const Container = styled.div`
   height: 58px;
@@ -26,10 +26,9 @@ const ItemsContainer = styled.div`
 
 const Items = styled.ul`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -40,23 +39,12 @@ const Item = styled.li`
   justify-content: center;
   align-items: center;
   padding: 5px;
-  width: 30%;
-  min-width: 90px;
-  max-width: 120px;
-  background-color: #eee;
   margin: 1.5%;
-  border-radius: 5px;
-
-  &::after {
-    content: "";
-    display: block;
-    padding-bottom: 100%;
-  }
 
   a {
     font-family: var(--ws-font-header);
     font-weight: 400;
-    color: #000;
+    color: #eee;
     text-decoration: none;
     text-align: center;
   }
@@ -79,7 +67,7 @@ const HamburgerContainer = styled.button`
 const Brand = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 
   hr {
     background-color: #fff;
@@ -140,10 +128,6 @@ const Navbar = () => {
                 <Link to="/contact">Контакты</Link>
               </Item>
             </Items>
-            <Brand>
-              <hr />
-              <p>Изготовление уборочного инвентаря</p>
-            </Brand>
           </div>
         </ItemsContainer>
         <HamburgerContainer>
