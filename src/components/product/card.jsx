@@ -4,8 +4,6 @@ import { GatsbyImage as Img } from "gatsby-plugin-image";
 import styled from "styled-components";
 
 const Photo = ({ className, img }) => {
-  console.log(img);
-
   return (
     <Img
       image={img}
