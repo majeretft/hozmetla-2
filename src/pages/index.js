@@ -40,7 +40,8 @@ const StyledUl = styled.ul`
 `;
 
 const DownloadCatalog = styled.a`
-  font-family: "Alegreya Sans", sans-serif;
+  display: inline-block;
+  font-family: var(--ws-font-text);
   font-weight: 500;
   padding: 10px 15px;
   border-radius: 4px;
@@ -50,6 +51,7 @@ const DownloadCatalog = styled.a`
   font-size: 1.2em;
   line-height: 1;
   transition: all 0.25s ease-in 0s;
+  text-decoration: none;
 
   span {
     display: inline-block;

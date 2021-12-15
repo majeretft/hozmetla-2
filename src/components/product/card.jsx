@@ -107,7 +107,7 @@ const Image = styled(Photo)`
 `;
 
 const FancyText = styled.span`
-  font-family: "Alegreya Sans", sans-serif;
+  font-family: var(--ws-font-text);
   text-transform: uppercase;
   font-weight: 800;
   position: absolute;
