@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link } from "gatsby";
 import { Turn as Hamburger } from "hamburger-react";
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
 import logo from "../../images/brand/vto_logo_txt.svg";
 
@@ -79,6 +81,47 @@ const Brand = styled.div`
   }
 `;
 
+const Contacts = styled.div`
+  hr {
+    background-color: #fff;
+    width: 100%;
+  }
+`;
+
+const Contact = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+
+  a {
+    display: fllex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    color: #111;
+    background-color: #eee;
+    width: 2rem;
+    height: 2rem;
+    transition: all 0.25s ease-in 0s;
+
+    @media screen and (hover: hover) and (pointer: fine) {
+      &:hover {
+        text-decoration: none;
+        color: #eee;
+        background-color: #404040;
+      }
+    }
+    margin-right: 5px;
+  }
+
+  span {
+    color: #fff;
+    font-size: 1.15em;
+    line-height: 1;
+    font-family: var(--ws-font-header);
+  }
+`;
+
 const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
   const menuRef = useRef(null);
@@ -128,6 +171,21 @@ const Navbar = () => {
                 <Link to="/contact">Контакты</Link>
               </Item>
             </Items>
+            <Contacts>
+              <hr />
+              <Contact>
+                <a href="mailto:sales@hozmetla.ru">
+                  <FontAwesomeIcon icon={faEnvelope} />
+                </a>
+                <span>sales@hozmetla.ru</span>
+              </Contact>
+              <Contact>
+                <a href="tel:+74912950643">
+                  <FontAwesomeIcon icon={faPhone} />
+                </a>
+                <span>+7 4912 950643</span>
+              </Contact>
+            </Contacts>
           </div>
         </ItemsContainer>
         <HamburgerContainer>
