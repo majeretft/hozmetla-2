@@ -18,10 +18,6 @@ const Page = () => {
     script.type = "text/javascript";
 
     el.appendChild(script);
-
-    return () => {
-        el.removeChild(script);
-    };
   }, []);
 
   return (
