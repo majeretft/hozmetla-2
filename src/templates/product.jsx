@@ -2,14 +2,16 @@ import React from "react";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 import { GatsbyImage as Image } from "gatsby-plugin-image";
+import { MDXRenderer } from "gatsby-plugin-mdx";
 
 import Layout from "../components/layout";
 import Navbar from "../components/layout/navbar";
 
 const Page = ({ data }) => {
-  const photos = data.allFile.nodes;
-  const json = data.indexFile.childJson;
-  const dim = data.dimFile.childImageSharp.gatsbyImageData;
+  const photos = data.photos?.nodes;
+  const json = data.indexFile?.childJson;
+  const dim = data.dimFile?.childImageSharp.gatsbyImageData;
+  const mdx = data.mdxFile?.childMdx.body;
 
   return (
     <Layout>
@@ -18,31 +20,34 @@ const Page = ({ data }) => {
       </header>
       <main className="container">
         <h1>
-          {json.name} <small>{json.code}</small>
+          {json && json.name} <small>{json && json.code}</small>
         </h1>
+
+        {mdx && <MDXRenderer>{mdx}</MDXRenderer>}
 
         <table>
           <thead>
             <tr>
               <th>Артикул</th>
-              {json.dim.map((x) => (
+              {json && json.dim.map((x) => (
                 <th key={x.label}>{x.label}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>{json.code}</td>
-              {json.dim.map((x) => (
+              <td>{json && json.code}</td>
+              {json && json.dim.map((x) => (
                 <td key={x.label}>{x.value}см</td>
               ))}
             </tr>
           </tbody>
         </table>
-        <Image alt="" image={dim} />
+
+        {dim && <Image alt="" image={dim} /> }
 
         <div>
-          {json.material.decoration && (
+          {json && json.material.decoration && (
             <p>
               {json.material.decoration.name}: {json.material.decoration.value}{" "}
               ({json.material.decoration.color})
@@ -51,7 +56,7 @@ const Page = ({ data }) => {
         </div>
 
         <div>
-          {json.material.handle && (
+          {json && json.material.handle && (
             <p>
               {json.material.handle.name}: {json.material.handle.value} (
               {json.material.handle.color})
@@ -60,7 +65,7 @@ const Page = ({ data }) => {
         </div>
 
         <div>
-          {json.material.handle && (
+          {json && json.material.handle && (
             <p>
               {json.material.filament.name}: {json.material.filament.value} (
               {json.material.filament.color})
@@ -68,7 +73,7 @@ const Page = ({ data }) => {
           )}
         </div>
 
-        {photos.map((p) => {
+        {photos && photos.map((p) => {
           return (
             <Image
               key={p.childImageSharp.id}
@@ -86,7 +91,7 @@ export default Page;
 
 export const query = graphql`
   query ProductPageQuery($dirPhoto: String, $dir: String) {
-    allFile(
+    photos: allFile(
       filter: {
         sourceInstanceName: { eq: "content" }
         relativeDirectory: { eq: $dirPhoto }
@@ -137,6 +142,16 @@ export const query = graphql`
     ) {
       childImageSharp {
         gatsbyImageData
+      }
+    }
+    mdxFile: file(
+      sourceInstanceName: { eq: "content" }
+      relativeDirectory: { eq: $dir }
+      base: { eq: "description.mdx" }
+    ) {
+      childMdx {
+        body
+        id
       }
     }
   }
