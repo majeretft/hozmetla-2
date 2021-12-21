@@ -20,7 +20,7 @@ const Page = ({ data }) => {
       </header>
       <main className="container">
         <h1>
-          {json && json.name} <small>{json && json.code}</small>
+          {json && json.name} <small>A{json && json.code}</small>
         </h1>
 
         {mdx && <MDXRenderer>{mdx}</MDXRenderer>}
