@@ -33,13 +33,24 @@ const CustomSwiper = styled.div`
   &:before {
     content: "";
     position: absolute;
-    top: 10%;
+    /* top: 10%;
+    bottom: 0;
+    left: -100%;
+    right: 8%; */
+    top: 0;
     bottom: 0;
     left: 0;
-    width: 85%;
-    background-color: #ececec;
+    right: 0;
+    background: linear-gradient(
+      141deg,
+      rgba(218, 213, 222, 1) 0%,
+      rgba(219, 213, 201, 1) 50%,
+      rgba(211, 220, 223, 1)
+    );
     border-top-right-radius: 150px;
     border-bottom-right-radius: 30px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 150px;
   }
 
   .my-swiper {
@@ -47,6 +58,7 @@ const CustomSwiper = styled.div`
   }
 
   .my-swiper-thumb {
+    padding-bottom: 25px;
     .swiper-wrapper {
       display: dlex;
       justify-content: center;
@@ -60,6 +72,42 @@ const CustomSwiper = styled.div`
       filter: grayscale(1);
       opacity: 0.5;
     }
+  }
+`;
+
+const Table = styled.table`
+  border: 1px solid #ffffff;
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  font-family: var(--ws-font-header);
+
+  td,
+  th {
+    border: 1px solid #ffffff;
+    padding: 3px 2px;
+  }
+
+  thead {
+    /* background: #0b6fa4; */
+    background: linear-gradient(
+      146deg,
+      rgba(0, 177, 212, 1) 0%,
+      rgba(14, 125, 150, 1) 100%
+    );
+    border-bottom: 5px solid #ffffff;
+  }
+
+  thead th {
+    font-size: 17px;
+    font-weight: bold;
+    color: #ffffff;
+    text-align: center;
+    border-left: 2px solid #ffffff;
+  }
+
+  thead th:first-child {
+    border-left: none;
   }
 `;
 
@@ -77,103 +125,105 @@ const Page = ({ data }) => {
       <header>
         <Navbar />
       </header>
-      <main>
-        <div className="container">
-          <h1>{json && json.name}</h1>
-          <Code>
-            <span>Арт. </span>A{json && json.code}
-          </Code>
+      <main className="container">
+        <div className="row">
+          <div className="col-xs-12 col-lg-5 order-md-2 d-md-flex flex-md-column justify-content-md-center">
+            <h1>{json && json.name}</h1>
+            <Code>
+              <span>Арт. </span>A{json && json.code}
+            </Code>
+
+            {mdx && <MDXRenderer>{mdx}</MDXRenderer>}
+          </div>
+          <div className="col-xs-12 col-lg-7">
+            <CustomSwiper>
+              <Swiper
+                style={{
+                  "--swiper-navigation-color": "#fff",
+                  "--swiper-pagination-color": "#fff",
+                }}
+                loop={true}
+                spaceBetween={10}
+                navigation={true}
+                thumbs={{ swiper: thumbsSwiper }}
+                className="my-swiper"
+                effect="fade"
+                fadeEffect={{
+                  crossFade: true,
+                }}
+              >
+                {photos &&
+                  photos.map((p) => {
+                    return (
+                      <SwiperSlide key={p.childImageSharp.id}>
+                        <Image
+                          alt=""
+                          image={p.childImageSharp.gatsbyImageData}
+                        />
+                      </SwiperSlide>
+                    );
+                  })}
+              </Swiper>
+              <Swiper
+                onSwiper={setThumbsSwiper}
+                loop={false}
+                spaceBetween={0}
+                slidesPerView={"auto"}
+                freeMode={true}
+                watchSlidesProgress={true}
+                className="my-swiper-thumb"
+              >
+                {photos &&
+                  photoIcons.map((p) => {
+                    return (
+                      <SwiperSlide key={p.childImageSharp.id}>
+                        <Image
+                          alt=""
+                          image={p.childImageSharp.gatsbyImageData}
+                        />
+                      </SwiperSlide>
+                    );
+                  })}
+              </Swiper>
+            </CustomSwiper>
+          </div>
         </div>
 
-        <CustomSwiper>
-          <div className="container">
-            <Swiper
-              style={{
-                "--swiper-navigation-color": "#fff",
-                "--swiper-pagination-color": "#fff",
-              }}
-              loop={true}
-              spaceBetween={10}
-              navigation={true}
-              thumbs={{ swiper: thumbsSwiper }}
-              className="my-swiper"
-              effect="fade"
-              fadeEffect={{
-                crossFade: true,
-              }}
-            >
-              {photos &&
-                photos.map((p) => {
-                  return (
-                    <SwiperSlide key={p.childImageSharp.id}>
-                      <Image alt="" image={p.childImageSharp.gatsbyImageData} />
-                    </SwiperSlide>
-                  );
-                })}
-            </Swiper>
-            <Swiper
-              onSwiper={setThumbsSwiper}
-              loop={false}
-              spaceBetween={0}
-              slidesPerView={"auto"}
-              freeMode={true}
-              watchSlidesProgress={true}
-              className="my-swiper-thumb"
-            >
-              {photos &&
-                photoIcons.map((p) => {
-                  return (
-                    <SwiperSlide key={p.childImageSharp.id}>
-                      <Image alt="" image={p.childImageSharp.gatsbyImageData} />
-                    </SwiperSlide>
-                  );
-                })}
-            </Swiper>
-          </div>
-        </CustomSwiper>
-
-        <div className="container">
-          {mdx && <MDXRenderer>{mdx}</MDXRenderer>}
-          <table>
-            <thead>
-              <tr>
-                <th>Артикул</th>
-                {json && json.dim.map((x) => <th key={x.label}>{x.label}</th>)}
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>{json && json.code}</td>
-                {json && json.dim.map((x) => <td key={x.label}>{x.value}см</td>)}
-              </tr>
-            </tbody>
-          </table>
-          {dim && <Image alt="" image={dim} />}
-          <div>
-            {json && json.material.decoration && (
-              <p>
-                {json.material.decoration.name}: {json.material.decoration.value}{" "}
-                ({json.material.decoration.color})
-              </p>
-            )}
-          </div>
-          <div>
-            {json && json.material.handle && (
-              <p>
-                {json.material.handle.name}: {json.material.handle.value} (
-                {json.material.handle.color})
-              </p>
-            )}
-          </div>
-          <div>
-            {json && json.material.handle && (
-              <p>
-                {json.material.filament.name}: {json.material.filament.value} (
-                {json.material.filament.color})
-              </p>
-            )}
-          </div>
-        </div>
+        <Table className="mb-3">
+          <thead>
+            <tr>
+              <th>Артикул</th>
+              {json && json.dim.map((x) => <th key={x.label}>{x.label}</th>)}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{json && json.code}</td>
+              {json && json.dim.map((x) => <td key={x.label}>{x.value}см</td>)}
+            </tr>
+          </tbody>
+        </Table>
+        {dim && <Image alt="" image={dim} />}
+        <ul>
+          {json && json.material.decoration && (
+            <li>
+              {json.material.decoration.name}: {json.material.decoration.value}{" "}
+              (Цвет: {json.material.decoration.color || " - "})
+            </li>
+          )}
+          {json && json.material.handle && (
+            <li>
+              {json.material.handle.name}: {json.material.handle.value} (Цвет:{" "}
+              {json.material.handle.color || " - "})
+            </li>
+          )}
+          {json && json.material.handle && (
+            <li>
+              {json.material.filament.name}: {json.material.filament.value}{" "}
+              (Цвет: {json.material.filament.color || " - "})
+            </li>
+          )}
+        </ul>
       </main>
     </Layout>
   );
