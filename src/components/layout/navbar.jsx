@@ -162,7 +162,7 @@ const Navbar = () => {
                 <Link to="/">Домашняя</Link>
               </Item>
               <Item>
-                <Link to="/contact">Продукция</Link>
+                <Link to="/products">Продукция</Link>
               </Item>
               <Item>
                 <Link to="/about">О Компании</Link>
