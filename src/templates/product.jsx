@@ -33,14 +33,10 @@ const CustomSwiper = styled.div`
   &:before {
     content: "";
     position: absolute;
-    /* top: 10%;
+    top: 10%;
     bottom: 0;
     left: -100%;
-    right: 8%; */
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    right: 8%;
     background: linear-gradient(
       141deg,
       rgba(218, 213, 222, 1) 0%,
@@ -49,8 +45,8 @@ const CustomSwiper = styled.div`
     );
     border-top-right-radius: 150px;
     border-bottom-right-radius: 30px;
-    border-top-left-radius: 30px;
-    border-bottom-left-radius: 150px;
+    /* border-top-left-radius: 30px;
+    border-bottom-left-radius: 150px; */
   }
 
   .my-swiper {
