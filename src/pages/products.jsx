@@ -46,7 +46,7 @@ const Page = ({ data }) => {
                 назначения.
               </Lead>
               <p>
-                Каталог доступен по ссылке: <a href={catalogUrl}>загрузить</a>
+                Каталог доступен по ссылке: <a href={catalogUrl} target="_blank" rel="noreferrer">загрузить</a>
               </p>
               <p>Метлы:</p>
               <ul>
